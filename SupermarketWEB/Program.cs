@@ -18,17 +18,6 @@ internal class Program
 
 
 
-
-
-
-
-        //add services to the
-        builder.Services.AddRazorPages();
-
-
-
-
-
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
 
