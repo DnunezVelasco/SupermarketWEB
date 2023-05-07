@@ -1,10 +1,13 @@
 html {
   font-size: 14px;
+
+
 }
 
 @media (min-width: 768px) {
   html {
     font-size: 16px;
+
   }
 }
 
@@ -13,10 +16,21 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+   
 }
 
 body {
   margin-bottom: 60px;
+ 
+}
+h1 {
+    color: black;
+}
+body {
+    background-image: radial-gradient(circle at 50.74% 52.76%, #46c7cb 0, #46b0b9 16.67%, #4798a3 33.33%, #467e89 50%, #43656e 66.67%, #3e4f56 83.33%, #373d40 100%);
+}
+p {
+    color:  black;
 }

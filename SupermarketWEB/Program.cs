@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using SupermarketWEB.Data;
 
 internal class Program
@@ -12,15 +11,12 @@ internal class Program
         builder.Services.AddRazorPages();
 
         builder.Services.AddDbContext<SupermarketContext>(Options =>
-      Options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB")));
+        Options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB")));
 
         var app = builder.Build();
 
-
-
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
-
         {
             app.UseExceptionHandler("/Error");
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
