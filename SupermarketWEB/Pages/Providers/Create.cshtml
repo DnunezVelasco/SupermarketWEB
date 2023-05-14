@@ -1,0 +1,66 @@
+﻿@page
+@model SupermarketWEB.Pages.Providers.CreateModel
+@{
+}
+<h1>Create</h1>
+
+<h4>Providers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Provider.First_Name" class="control-label"></label>
+                <input asp-for="Provider.First_Name" class="form-control" />
+
+                <span asp-validation-for="Provider.First_Name" class="text-danger"></span>
+
+            </div>
+            <div cite="form-grup">
+                <label asp-for="Provider.Last_Name" class="control-label"></label>
+                <input asp-for="Provider.Last_Name" class="form-control" />
+
+                <label asp-for="Provider.Documen_Number" class="control-label"></label>
+                <input asp-for="Provider.Documen_Number" class="form-control" />
+
+                <label asp-for="Provider.Adress" class="control-label"></label>
+                <input asp-for="Provider.Adress" class="form-control" />
+
+                <label asp-for="Provider.Birthday" class="control-label"></label>
+                <input asp-for="Provider.Birthday" class="form-control" />
+
+                <label asp-for="Provider.Email" class="control-label"></label>
+                <input asp-for="Provider.Email" class="form-control" />
+
+                <label asp-for="Provider.Phone_Number" class="control-label"></label>
+                <input asp-for="Provider.Phone_Number" class="form-control" />
+
+
+
+                <span asp-validation-for="Provider. Last_Name" class="text-danger"></span>
+
+                <span asp-validation-for="Provider. Documen_Number" class="text-danger"></span>
+
+                <span asp-validation-for="Provider. Adress" class="text-danger"></span>
+
+                <span asp-validation-for="Provider. Birthday" class="text-danger"></span>
+
+                <span asp-validation-for="Provider. Phone_Number" class="text-danger"></span>
+
+
+            </div>
+            <div class="form-grup mt-3 ">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a asp-page="Index" class="btn btn-primary">Back to list </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
