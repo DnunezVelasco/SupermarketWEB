@@ -13,7 +13,7 @@ internal class Program
         builder.Services.AddDbContext<SupermarketContext>(Options =>
         Options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB")));
 
-        var app = builder.Build();
+        var app = builder.Build();  
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())

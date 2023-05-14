@@ -1,0 +1,26 @@
+﻿@page
+@model SupermarketWEB.Pages.ProviDetailders.IndexModel
+@{
+}
+<form method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Select</th>
+            </tr>
+        </thead>
+            <tbody>
+            @foreach (var products in SupermarketWEB.mo) 
+            {
+                    <tr>
+                        <td>@products.ProductNama</td>
+                        <td>@products.Price</td>
+                    <td><input type="checkbox" name="selectedProducts" value="@products.ProductId" checked="@products.IsSelected" /></td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+    <button type="submit">Checkout</button>
+</form>
