@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
@@ -13,9 +14,11 @@ namespace SupermarketWEB.Pages.Products
         {
             _context = context;
         }
+        public List<Category> CategoryLis { get; set; }
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
+            CategoryLis = await _context.Categories.ToListAsync();
             return Page();
         }
 

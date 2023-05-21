@@ -22,6 +22,9 @@
         <p>Nombre: @Model.ModoPago.Name</p>
         <p>Observación: @Model.ModoPago.Observation</p>
 
+     
+
+
         <h2>Realizar compra:</h2>
         <form method="post" asp-page-handler="OnPostComprar">
             <input type="hidden" name="ProductoId" value="@Model.Producto.Id" />
