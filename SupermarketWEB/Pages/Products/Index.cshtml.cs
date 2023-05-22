@@ -7,6 +7,7 @@ using SupermarketWEB.Models;
 
 namespace SupermarketWEB.Pages.Products
 {
+    [Authorize]
     public class IndexModel : PageModel
 
     {
