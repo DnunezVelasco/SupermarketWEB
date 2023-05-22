@@ -21,8 +21,9 @@ namespace SupermarketWEB.Data
         public DbSet<Detail> ProviDetailders { get; set; }
 
         public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Register> Registers { get; set; }
 
-       
+
 
     }
 }

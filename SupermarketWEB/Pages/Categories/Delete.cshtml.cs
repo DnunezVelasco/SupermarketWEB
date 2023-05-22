@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ namespace SupermarketWEB.Pages.Categories
 {
     public class DeleteModel : PageModel
     {
+       
         private readonly SupermarketContext _context;
 
         public DeleteModel(SupermarketContext context)

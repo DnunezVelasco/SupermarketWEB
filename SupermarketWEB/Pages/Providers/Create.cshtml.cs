@@ -5,6 +5,7 @@ using SupermarketWEB.Models;
 
 namespace SupermarketWEB.Pages.Providers
 {
+
     public class CreateModel : PageModel
     {
         private readonly SupermarketContext _context;

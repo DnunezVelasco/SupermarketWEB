@@ -12,8 +12,8 @@ using SupermarketWEB.Data;
 namespace SupermarketWEB.Migrations
 {
     [DbContext(typeof(SupermarketContext))]
-    [Migration("20230510043102_Initial")]
-    partial class Initial
+    [Migration("20230522014104_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -212,6 +212,53 @@ namespace SupermarketWEB.Migrations
                     b.ToTable("Providers");
                 });
 
+            modelBuilder.Entity("SupermarketWEB.Models.Register", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Registers");
+                });
+
+            modelBuilder.Entity("SupermarketWEB.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("RegisterId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RegisterId");
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("CategoryProduct", b =>
                 {
                     b.HasOne("SupermarketWEB.Models.Category", null)
@@ -245,6 +292,13 @@ namespace SupermarketWEB.Migrations
                         .HasForeignKey("PayModeId");
                 });
 
+            modelBuilder.Entity("SupermarketWEB.Models.User", b =>
+                {
+                    b.HasOne("SupermarketWEB.Models.Register", null)
+                        .WithMany("Users")
+                        .HasForeignKey("RegisterId");
+                });
+
             modelBuilder.Entity("SupermarketWEB.Models.Detail", b =>
                 {
                     b.Navigation("Invoices");
@@ -258,6 +312,11 @@ namespace SupermarketWEB.Migrations
             modelBuilder.Entity("SupermarketWEB.Models.PayMode", b =>
                 {
                     b.Navigation("PayModes");
+                });
+
+            modelBuilder.Entity("SupermarketWEB.Models.Register", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

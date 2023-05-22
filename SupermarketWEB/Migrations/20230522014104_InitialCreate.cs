@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SupermarketWEB.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -77,6 +77,20 @@ namespace SupermarketWEB.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Registers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Registers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CategoryProduct",
                 columns: table => new
                 {
@@ -119,6 +133,26 @@ namespace SupermarketWEB.Migrations
                         name: "FK_Invoices_ProviDetailders_DetailId",
                         column: x => x.DetailId,
                         principalTable: "ProviDetailders",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RegisterId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_User_Registers_RegisterId",
+                        column: x => x.RegisterId,
+                        principalTable: "Registers",
                         principalColumn: "Id");
                 });
 
@@ -167,6 +201,11 @@ namespace SupermarketWEB.Migrations
                 name: "IX_PayModes_PayModeId",
                 table: "PayModes",
                 column: "PayModeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_RegisterId",
+                table: "User",
+                column: "RegisterId");
         }
 
         /// <inheritdoc />
@@ -182,6 +221,9 @@ namespace SupermarketWEB.Migrations
                 name: "Providers");
 
             migrationBuilder.DropTable(
+                name: "User");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
@@ -189,6 +231,9 @@ namespace SupermarketWEB.Migrations
 
             migrationBuilder.DropTable(
                 name: "Invoices");
+
+            migrationBuilder.DropTable(
+                name: "Registers");
 
             migrationBuilder.DropTable(
                 name: "ProviDetailders");

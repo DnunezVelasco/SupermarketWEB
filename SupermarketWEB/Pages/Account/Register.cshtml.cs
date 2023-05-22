@@ -1,18 +1,17 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
-namespace SupermarketWEB.Pages.Categories
+namespace SupermarketWEB.Pages.Account
 {
-    public class CreateModel : PageModel
+    public class RegisterModel : PageModel
     {
-        
         private readonly SupermarketContext _context;
 
-        public CreateModel(SupermarketContext context)
+        public RegisterModel(SupermarketContext context)
         {
+
             _context = context;
         }
 
@@ -23,18 +22,18 @@ namespace SupermarketWEB.Pages.Categories
 
         [BindProperty]
 
-        public Category Category { get; set; } = default!;
-
+        public Register Register { get; set; } = default!;
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.Categories == null || Category == null)
+            if (!ModelState.IsValid || _context.Registers == null||  Register == null)
             {
+
                 return Page();
             }
-
-            _context.Categories.Add(Category);
+            _context.Registers.Add(Register);
             await _context.SaveChangesAsync();
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Account/Login");
+
         }
     }
 }

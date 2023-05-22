@@ -10,6 +10,12 @@ internal class Program
         // Add services to the container.
         builder.Services.AddRazorPages();
 
+        builder.Services.AddAuthentication().AddCookie("MyCookieAuth", options =>
+        {
+            options.Cookie.Name = "MyCookieAuth";
+            options.LoginPath = "/Account/Register";
+        });
+
         builder.Services.AddDbContext<SupermarketContext>(Options =>
         Options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketDB")));
 

@@ -1,0 +1,36 @@
+﻿    @page
+@model SupermarketWEB.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Registers";
+}
+<h1>Create</h1>
+
+
+<h4>Register</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Register.Email" class="control-label"></label>
+                <input asp-for="Register.Email" class="form-control" />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Register.Password" class="control-label"></label>
+                <input asp-for="Register.Password" class="form-control" />
+
+            </div>
+            <div class="form-group-mt-3">
+                <input type="submit" value="Registrar" class="btn btn-success" />
+                <a asp-page="Index" class="btn btn-primary">Back to list</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
