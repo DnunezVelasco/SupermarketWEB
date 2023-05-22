@@ -17,13 +17,12 @@ th,
   color: white;
 }
 
-/* Estilos para el encabezado */
+
 header {
     background-color: #f8f9fa;
   
 }
 
-/* Estilos para el pie de página */
 footer {
     padding: 10px 0;
     text-align: center;
@@ -52,7 +51,7 @@ footer {
     transition: all 0.3s ease-in-out;
 }
 
-/* Estilos para los enlaces activos */
+
 .navbar-nav .nav-item.active .nav-link {
     color: #007bff;
 }
@@ -62,7 +61,7 @@ footer {
     align-items: flex-start;
 }
 
-/* Estilos para los ítems de navegación en dispositivos pequeños */
+
 .navbar-nav.flex-grow-1 {
     flex-direction: row;
 }
