@@ -30,7 +30,7 @@ namespace SupermarketWEB.Pages.Products
         {
             if (!ModelState.IsValid || _context.Products == null || Product == null)
             {
-                return Page();
+                //return Page();
             }
 
             _context.Products.Add(Product);

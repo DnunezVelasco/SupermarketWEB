@@ -19,13 +19,26 @@ namespace SupermarketWEB.Pages.Products
             _context = context;
         }
         public IList<Product> Products { get; set; } = default!;
-
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            if (_context.Products != null)
+            Products = await _context.Products
+                .Include(p => p.Category)
+                .ToListAsync();
+            return Page();
+        }
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
             {
-                Products = await _context.Products.ToListAsync();
+                return NotFound();
             }
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage("./Index");
         }
     }
 }
